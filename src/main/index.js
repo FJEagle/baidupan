@@ -28,9 +28,9 @@ function createWindow() {
     });
 
     require('./app');   //
-    require('./setting');   //
-    require('./update');    //手动更新
-    require('auto_update'); //自动更新
+    require('./setting');
+    require('./update');
+    require('./autoUpdate');
 }
 
 app.on('ready', createWindow);
