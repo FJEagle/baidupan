@@ -25,7 +25,9 @@ function createWindow() {
         frame: false,
         minHeight: 580,
         minWidth: 980,
-    })
+        show: false
+    });
+
     mainWindow.setMenu(null);
     mainWindow.loadURL(winURL)
 
@@ -33,10 +35,12 @@ function createWindow() {
         mainWindow = null
     });
 
-    require('./app');
-    require('./setting');
-    // require('./autoUpdate');
-    require('./update');
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+        require('./app');
+        require('./setting');
+        require('./update');
+    });
 }
 
 app.on('ready', createWindow)

@@ -11,12 +11,16 @@ QQ群: [点击加入](https://shang.qq.com/wpa/qunwpa?idkey=68670d406ff42150f780
 ## 部署更新
 使用 `npm run build` 之后生成的 `exe` 文件和 `latest.yml` 放到配置的更新地址就可以了
 在 `package.json` 中修改 `publish` 下的 `url`
-修改 `src/main/update.js` 和 `auto_update.js` 里面的更新地址
+修改 `src/main/update.js` 里面的更新地址
 
 ```
 #应用程序更新包地址
 autoUpdater.setFeedURL('http://lee.com/app/update1');
 ```
+
+## 问题
+软件在启动的时候提示没有任何更新 暂时没有找到好点的办法
+
 
 auto_update.js 为应用程序自检测更新
 update为用户主动触发更操作
