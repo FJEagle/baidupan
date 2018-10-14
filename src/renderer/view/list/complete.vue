@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-        阿斯达多
+        传输完成
     </div>
 </template>
 

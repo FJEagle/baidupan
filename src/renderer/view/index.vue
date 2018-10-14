@@ -2,7 +2,7 @@
     <div>
         <uploadTabBar></uploadTabBar>
         <div class="content">
-            <h1>最近使用</h1>
+            <h1>最近使用1</h1>
         </div>
     </div>
 </template>
@@ -12,7 +12,7 @@
 
     export default {
         name: "index",
-        components:{uploadTabBar}
+        components:{uploadTabBar},
     }
 </script>
 

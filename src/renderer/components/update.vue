@@ -1,19 +1,19 @@
 <template>
-    <transition name="fade">
-        <div v-if="show">
-            <div class="modal"></div>
-            <div class="update">
-                <div class="header"><h2>应用更新</h2><i class="close" @click="close"></i></div>
-                <div class="body">
-                    <p>更新进度</p>
-                    <p class="percentage">{{percent}}%</p>
-                    <div class="progress">
-                        <div class="length" :style="{width:percent+'%'}"></div>
-                    </div>
-                </div>
+    <Modal class="update" v-model="show" width="400" footer-hide :mask-closable="false">
+        <p slot="header" style="color:#f60;text-align:center">
+            <Icon type="ios-information-circle"></Icon>
+            <span>应用更新</span>
+        </p>
+        <div style="text-align:center">
+            <div class="body">
+            <p>更新进度</p>
+            <p class="percentage">{{percent}}%</p>
+            <div class="progress">
+            <div class="length" :style="{width:percent+'%'}"></div>
+            </div>
             </div>
         </div>
-    </transition>
+    </Modal>
 </template>
 
 <script>
@@ -22,7 +22,7 @@
         data() {
             return {
                 show: false,
-                percent: 0
+                percent: 5
             }
         },
         methods:{
@@ -54,6 +54,7 @@
             this.$electron.ipcRenderer.on('message', (event, data) => {
                 switch (data.status) {
                     case 0:
+                        this.$Message.destroy();
                         this.$Message.loading(data.msg);
                         break;
                     case 1:
@@ -73,54 +74,7 @@
 
 
 <style>
-    .modal {
-        position: absolute;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: .4;
-        background: #000;
-    }
 
-    .update {
-        z-index: 10001;
-        width: 400px;
-        height: 180px;
-        background-color: #FFFFFF;
-        border-radius: 10px;
-        border: 1px solid #CCC;
-        position: absolute;
-        top: 40%;
-        margin-top: -90px;
-        left: 50%;
-        margin-left: -200px;
-        box-shadow: #FFFFFF 0 0 10px;
-    }
-
-    .update .header i.close {
-        display: inline-block;
-        position: absolute;
-        top: 11px;
-        right: 12px;
-        width: 20px;
-        height: 20px;
-        background-image: url("../assets/img/close.png");
-        background-size: 100%;
-        cursor: pointer;
-    }
-
-    .update .header {
-        border-bottom: 1px solid #ccc;
-        height: 40px;
-        line-height: 40px;
-    }
-
-    .update .header h2 {
-        text-align: center;
-        font-size: 20px;
-    }
 
     .update .body {
         padding-top: 20px;

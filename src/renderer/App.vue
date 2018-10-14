@@ -1,17 +1,19 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-  export default {
-    name: 'project2'
-  }
+    export default {
+        name: 'project1'
+    }
 </script>
 
 <style>
-  .content{
-    padding: 10px;
-  }
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
 </style>

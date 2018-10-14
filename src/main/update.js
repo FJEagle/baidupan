@@ -1,8 +1,9 @@
-import {BrowserWindow, ipcMain, webContents} from 'electron'
+// 注意这个autoUpdater不是electron中的autoUpdater
 import {autoUpdater} from "electron-updater"
+import {BrowserWindow, ipcMain, webContents} from 'electron'
 
+var count = 0;
 const window = BrowserWindow.fromWebContents(webContents.getFocusedWebContents());
-//和之前package.json配置的一样
 
 //处理更新操作
 function handleUpdate() {
@@ -14,7 +15,7 @@ function handleUpdate() {
     };
 
     //和之前package.json配置的一样
-    autoUpdater.setFeedURL('http://lee.com/app/update1');
+    autoUpdater.setFeedURL('http://test.yhleb.com/update');
 
     //更新错误
     autoUpdater.on('error', function (error) {
@@ -40,24 +41,24 @@ function handleUpdate() {
 
     // 更新下载进度事件
     autoUpdater.on('download-progress', function (progressObj) {
-        window.webContents.send('downloadProgress', progressObj)
+        mainWindow.webContents.send('downloadProgress', progressObj)
     });
 
 
-    autoUpdater.on('update-downloaded', () => {
+    autoUpdater.on('update-downloaded', function (event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
         ipcMain.on('isUpdateNow', (e, data) => {
             autoUpdater.quitAndInstall();
         });
-        setTimeout(()=>{
+        setTimeout(() => {
             autoUpdater.quitAndInstall();
-        },3000)
+        }, 3000)
     });
 
     //执行自动更新检查
     autoUpdater.checkForUpdates();
 }
 
-
+handleUpdate();
 
 // 通过main进程发送事件给renderer进程，提示更新信息
 function sendUpdateMessage(text) {
@@ -65,6 +66,6 @@ function sendUpdateMessage(text) {
 }
 
 ipcMain.on("checkForUpdate", (event, data) => {
-    // event.sender.send('reply', 'hi lee my name is yuan, age is 17');
-    handleUpdate();
+    console.log('执行自动更新检查!!!');
+    autoUpdater.checkForUpdates();
 });
