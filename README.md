@@ -2,8 +2,8 @@
 该项目只是学习使用 项目中使用的百度的UI以及百度的LOGO只为学习目的,如果侵犯了百度的权益,请百度联系我们删除
 
 ## 里面实现了自动更新和手动更新 以及百度云盘的UI
-![Image text](https://segmentfault.com/img/bVbh9nA)
-![Image text](https://segmentfault.com/img/bVbh9no)
+![Image text](https://github.com/lihaotian0607/baidupan/blob/master/screenshot/1.gif?raw=true)
+![Image text](https://github.com/lihaotian0607/baidupan/blob/master/screenshot/2.png?raw=true)
 ## 联系我们
 Email: haotian0607@gmail.com
 QQ群: [点击加入](https://shang.qq.com/wpa/qunwpa?idkey=68670d406ff42150f78000829448ebf700c3a92617025155f9864366c3d04654)
